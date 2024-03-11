@@ -1,0 +1,10 @@
+docker build -t mysql_blog .
+
+//-t es el tag name
+//mysql_blog es el nombre
+// . donde vaya a correro busque la carpeta
+
+docker run --name mysql_container -d -p 33068:3306 mysql_blog
+
+1cc364db0c3db1a5172624ee4601d44d8d3c6dd4461f87f7971d99093307b2df
+id de la imagen 
