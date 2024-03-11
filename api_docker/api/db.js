@@ -1,6 +1,6 @@
-import conn from './connection.js'
+const conn = require('./connection.js')
 
-export async function getAllBlogs() {
+async function getAllBlogs() {
   try {
     const [rows] = await conn.query('SELECT * FROM blogs')
     return rows
@@ -9,7 +9,18 @@ export async function getAllBlogs() {
     return e
   }
 }
-export async function update(title, content) {
+
+async function getBlog(id) {
+  try {
+    const [rows] = await conn.query(`SELECT * FROM blogs WHERE id = ${id}`)
+    return rows
+  } catch (e) {
+    console.log(e)
+    return e
+  }
+}
+
+async function update(title, content) {
   try {
     const [result] = await conn.query(`UPDATE blogs SET content = '${content}' WHERE title = '${title}'`)
     return result
@@ -18,7 +29,7 @@ export async function update(title, content) {
   }
 }
 
-export async function createBlog(title, content) {
+async function createBlog(title, content) {
   try {
     const [result] = await conn.query(`INSERT INTO blogs (title, content) VALUES ('${title}', '${content}')`)
     return result
@@ -28,7 +39,7 @@ export async function createBlog(title, content) {
   }
 }
 
-export async function deleteBlog(id) {
+async function deleteBlog(id) {
   try {
     const [result] = await conn.query(`DELETE FROM blogs WHERE id = ${id}`)
     return result
@@ -36,4 +47,12 @@ export async function deleteBlog(id) {
     console.log(e)
     return e
   }
+}
+
+module.exports = {
+  getAllBlogs,
+  getBlog,
+  update,
+  createBlog,
+  deleteBlog,
 }

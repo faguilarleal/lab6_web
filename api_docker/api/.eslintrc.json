@@ -10,6 +10,9 @@
     },
     "rules": {
         "semi": ["error", "never"],
-        "import/extensions": "ignore"
+        "import/extensions": ["error", "ignorePackages", {
+            "js": "always",
+            "json": "always"
+          }]
     }
 }
