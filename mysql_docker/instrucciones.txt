@@ -8,3 +8,8 @@ docker run --name mysql_container -d -p 33068:3306 mysql_blog
 
 1cc364db0c3db1a5172624ee4601d44d8d3c6dd4461f87f7971d99093307b2df
 id de la imagen 
+
+npm start // en la carpeta del api 
+
+// contrase;a de root 
+root_password
