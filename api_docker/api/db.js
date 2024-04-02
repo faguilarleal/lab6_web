@@ -29,9 +29,9 @@ async function update(title, content) {
   }
 }
 
-async function createBlog(title, content) {
+async function createBlog(title, author, content, image) {
   try {
-    const [result] = await conn.query(`INSERT INTO blogs (title, content) VALUES ('${title}', '${content}')`)
+    const [result] = await conn.query(`INSERT INTO blogs (title, author, content, imagen) VALUES ('${title}', '${author}', '${content}', '${image}')`)
     return result
   } catch (e) {
     console.log(e)

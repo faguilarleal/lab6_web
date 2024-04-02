@@ -4,8 +4,9 @@ const cors = require('cors') // Importa el módulo de CORS
 // const swaggerJSDoc = require('swagger-jsdoc')
 // eslint-disable-next-line import/no-extraneous-dependencies
 const swaggerUi = require('swagger-ui-express')
+// Importa la configuración de Swagger que cree
 
-const specs = require('./swaggerConfig.js') // Importa la configuración de Swagger que creaste
+const specs = require('./swaggerConfig.js')
 
 const {
   getAllBlogs, createBlog, deleteBlog, update, getBlog,
@@ -22,7 +23,7 @@ app.use('/docs', swaggerUi.serve, swaggerUi.setup(specs))
 
 // cors options for development
 const corsOptions = {
-  origin: 'http://127.0.0.1:3000',
+  origin: 'http://127.0.0.1:5500',
   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
 }
 app.use(cors(corsOptions))
@@ -32,7 +33,7 @@ app.listen(port, () => {
 })
 
 app.get('/', (req, res) => {
-  res.send('Hello World!')
+  res.send('Estas dentro de la api!')
 })
 /**
  * @swagger
@@ -70,12 +71,13 @@ app.get('/blogs/:id', async (req, res) => {
 // eslint-disable-next-line consistent-return
 app.post('/blogs', async (req, res) => {
   try {
-    const [title, content] = [req.body.title, req.body.content]
-    if (!title || !content) {
+    // eslint-disable-next-line max-len
+    const [title, author, content, imagen] = [req.body.title, req.body.author, req.body.content, req.body.imagen]
+    if (!title || !author || !content || !imagen) {
       return res.status(400).send('Falta título o contenido en la solicitud')
     }
-    console.log(title, content)
-    const blogs = await createBlog(title, content)
+    console.log(title, author, content, imagen)
+    const blogs = await createBlog(title, author, content, imagen)
     res.status(200).json(blogs)
   } catch (error) {
     res.status(500).json({ message: 'error creating the character' })

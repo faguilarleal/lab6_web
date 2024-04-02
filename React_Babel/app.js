@@ -1,13 +1,6 @@
-function App() {
-    return (
-        <div>
-          <Blog />
-        </div>
-    );
-}
 
 // Renderizar el componente en el DOM
 ReactDOM.render(
-    <App />,
+    <Blog h = "Hola"/>,
     document.getElementById('master')
 );
