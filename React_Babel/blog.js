@@ -4,17 +4,13 @@ function Blog(props) {
     document.getElementById("master").style.height = '100%',
     document.body.style.margin = 0,
     // document.body.style.backgroundColor = 'purple',
-    <div>
+    // <div>
+    //     <Articulos/>
+    // </div>
+    <div id = "layout" style={{display:'grid', backgroundColor:'white', gridTemplateRows:'10% 50% 40%'}}>
+        <Header/>
+        <Content/>
         <Articulos/>
     </div>
-    // <div id = "layout" style={{display:'grid', backgroundColor:'white', gridTemplateRows:'10% 90%'}}>
-    //     <div id = "header" style={{backgroundColor:'green', width:'100%', height:"100%"}}>
-
-    //     </div>
-    //     <div id = "content" style={{backgroundColor:'blue', width:'100%', height:"100vh"}}>
-
-    //     </div>
-        
-    // </div>
   );
 }
