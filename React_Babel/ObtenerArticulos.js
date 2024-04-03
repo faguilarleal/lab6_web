@@ -4,7 +4,6 @@ function Articulos() {
 
     async function llamarAPI() {
         try {
-            
             let artics = await fetch('http://127.0.0.1:3000/blogs')
             let articulos = await artics.json()
             console.log(articulos[0])
@@ -24,9 +23,7 @@ function Articulos() {
 
     // Condición para mostrar un estado vacío cuando no hay publicaciones
     if (loading) {
-        console.log("Cargando...")
-         // Muestra un mensaje de carga mientras se obtienen los datos
-        return <div><img src='https://media.tenor.com/NqKNFHSmbssAAAAi/discord-loading-dots-discord-loading.gif' alt = 'GIF' style={{width:'100px', heigth:'100px'}}></img></div>;
+        return <Loading />;
     } else if (listadoArticulos.length === 0) {
         return <div><img src='https://media.tenor.com/TlEiCCBTkNUAAAAi/alice-waiting.gif'></img>No hay publicaciones</div>; // Muestra un mensaje de estado vacío
     }
